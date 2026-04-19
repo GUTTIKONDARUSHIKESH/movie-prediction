@@ -1,0 +1,258 @@
+:root {
+    --bg-dark: #0f172a;
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --accent: #ec4899;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Stunning Mesh Gradient Background */
+.mesh-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: 
+        radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.25), transparent 40%),
+        radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.2), transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(56, 189, 248, 0.2), transparent 40%);
+    filter: blur(60px);
+    animation: drift 15s infinite alternate ease-in-out;
+}
+
+@keyframes drift {
+    0% { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.1) translate(-20px, 20px); }
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.logo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: linear-gradient(to right, #fff, #a5b4fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.dot {
+    color: var(--accent);
+    -webkit-text-fill-color: var(--accent);
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-top: 0.5rem;
+}
+
+/* Glassmorphism Panel */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-panel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+input, select {
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    color: var(--text-main);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s ease;
+    appearance: none;
+}
+
+select {
+    cursor: pointer;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position-x: 96%;
+    background-position-y: 50%;
+}
+
+input:focus, select:focus {
+    background: rgba(15, 23, 42, 0.6);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+/* Awesome Predict Button */
+.actions {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.btn-predict {
+    width: 100%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-predict:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px -5px rgba(236, 72, 153, 0.4);
+}
+
+.btn-predict:active {
+    transform: scale(0.98);
+}
+
+.spinner {
+    border: 3px solid rgba(255,255,255,0.3);
+    border-top: 3px solid white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hide {
+    display: none !important;
+}
+
+/* Results Display */
+.result-container {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--glass-border);
+    text-align: center;
+    animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.result-label {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.result-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 4rem;
+    font-weight: 800;
+    background: linear-gradient(to right, #4ade80, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+}
+
+.result-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border-radius: 99px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+@media (max-width: 640px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    .result-value {
+        font-size: 3rem;
+    }
+}
